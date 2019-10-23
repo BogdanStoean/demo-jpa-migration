@@ -1,0 +1,10 @@
+spring:
+#  flyway:
+#    enabled: false
+#  jpa:
+#    hibernate:
+#      ddl-auto: create-drop
+  datasource:
+    url: jdbc:postgresql://localhost:5432/demo
+    username: demo
+    password: demo

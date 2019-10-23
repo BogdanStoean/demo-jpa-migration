@@ -1,0 +1,29 @@
+version: '3'
+services:
+  app-v1:
+    image: demo-jpa-migration
+    ports:
+      - 18080:8080
+    networks:
+    - demo
+    environment:
+      JAVA_OPTS: -Xms200m -Xmx380m -XX:MaxMetaspaceSize=100m
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/demo
+      SPRING_DATASOURCE_USERNAME: demo
+      SPRING_DATASOURCE_PASSWORD: demo
+    depends_on:
+    - db
+  db:
+    image: postgres:9.5
+    networks:
+    - demo
+    ports:
+    - 55432:5432
+    environment:
+      POSTGRES_USER: demo
+      POSTGRES_PASSWORD: demo
+      POSTGRES_DB: demo
+#Docker Networks
+networks:
+  demo:
+    driver: bridge
